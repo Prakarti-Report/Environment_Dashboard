@@ -1425,7 +1425,7 @@ async function signIn(email, password) {
     if (error || !data || !data.user) {
       return {
         data: null,
-        error: new Error('Invalid email or password.')
+        error: error || new Error('Authentication failed.')
       };
     }
 
@@ -1448,7 +1448,7 @@ async function signIn(email, password) {
     console.error('[EarthData] signIn exception:', err);
     return {
       data: null,
-      error: new Error('Invalid email or password.')
+      error: err
     };
   }
 }
